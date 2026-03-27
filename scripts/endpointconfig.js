@@ -1,4 +1,4 @@
-import { getConfigValue } from '@dropins/tools/lib/aem/configs.js';
+import { getConfigValue } from './configs.js';
 
 function getAEMPublish() {
   return getConfigValue('aem.publish');

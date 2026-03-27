@@ -8,7 +8,7 @@ export default async function decorate(block) {
   const html = htm.bind(h);
   const aempublishurl = getAEMPublish();
   const aemauthorurl = getAEMAuthor();
-  const persistedquery = '/graphql/execute.json/aem-boilerplate-frescopa/QuizByPath';
+  const persistedquery = '/graphql/execute.json/frescopa/QuizByPath';
   const quizpath = block.querySelector(':scope div:nth-child(1) > div a').innerHTML.trim();
 
   const url = window.location && window.location.origin && window.location.origin.includes('author')

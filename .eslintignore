@@ -6,6 +6,7 @@ tools/pdp-metadata
 scripts/__dropins__
 scripts/commerce-events-collector.js
 scripts/commerce-events-sdk.js
+scripts/widgets
 plugins/
 cypress/
 component-models.json
@@ -14,6 +15,4 @@ dompurify.min.js
 blocks/form/rules/formula/*
 blocks/form/rules/model/*
 blocks/form/rules/functionRegistration.js
-blocks/form/rules/functions.js
 blocks/video/videojs/video.min.js
-dompurify.min.js

@@ -5,4 +5,11 @@ Disallow: /enrichment/
 Disallow: /tools/
 Disallow: /plugins/experimentation/
 
-Sitemap: https://www.aemshop.net/sitemap-index.xml
+User-agent: GPTBot
+Disallow: /blog/cold-brewing-101
+User-agent: OAI-SearchBot
+Disallow: /blog/cold-brewing-101
+User-agent: OAI-User
+Disallow: /blog/cold-brewing-101
+
+Sitemap: https://frescopa.coffee/sitemap-index.xml

@@ -1,3 +1,5 @@
+/* stylelint-disable selector-class-pattern, no-descending-specificity */
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -14,7 +16,7 @@
   navigation: auto;
 }
 
-::view-transition-group(root) {
+::view-transition-group(*) {
   animation-duration: 0.5s;
 }
 
@@ -183,6 +185,11 @@ html.adobe-ue-edit {
   height: unset
 }
 
+html.adobe-ue-preview body,
+html.adobe-ue-edit body {
+  height: unset
+}
+
 html {
   font-size: 62.5%;
 }
@@ -201,11 +208,6 @@ body {
 
 body:not(.appear) {
   display: none;
-}
-
-html.adobe-ue-preview body,
-html.adobe-ue-edit body {
-  height: unset
 }
 
 header {
@@ -244,7 +246,7 @@ h6 {
 }
 
 h1 {
-  font: var(--type-display-1-font);
+  font: normal normal normal 56px/56px Baskerville, serif;
   letter-spacing: var(--type-display-1-letter-spacing);
 }
 
@@ -279,14 +281,21 @@ p {
   letter-spacing: 0;
 }
 
+
+
 p,
 dl,
 ol,
 ul,
 pre,
 blockquote {
-  margin-top: 1.5625em;
+  margin-top: .5em;
   margin-bottom: 1.5625em;
+} 
+
+p+p {
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
 hr {
@@ -382,8 +391,8 @@ button.button:disabled:hover {
 
 main a.button.secondary,
 button.button.secondary {
-  background-color: #DC6E52;
-  border: #DC6E52 solid;
+  background-color: #95351D;
+  border: #95351D solid;
   color: #fff;
 }
 
@@ -441,7 +450,7 @@ main > .section:first-of-type {
   margin-top: 30px;
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   main > .section:first-of-type {
     margin-top: 70px;
   }
@@ -466,39 +475,6 @@ main .section.highlight {
 
 .dropin-input-date__icon {
   z-index: 2;
-}
-
-
-
-
-
-main > .section + .numbered {
-  margin: 20px;
-}
-
-main > .section + .card-tiles > div {
-  max-width: 1200px;
-}
-
-main > .section + .background {
-  max-width: 1360px;
-  padding: 10px 0;
-  margin-left: auto;
-  margin-right: auto;
-  background: var(--frescopa-color-background) url('../../styles/backgrounds/big.svg') no-repeat center center/cover;
-}
-
-main > .section + .background > div {
-  max-width: 1200px;
-  margin: auto;
-}
-
-@media (min-width: 900px) {
-  main > .section + .background {
-    border-radius: 12px;
-    padding: 50px 0 2px;
-    margin-top: -20px;
-  }
 }
 
 /* Layout: Columns */
@@ -534,13 +510,13 @@ body.columns main > .section:empty {
   display: none;
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
   body.columns main {
       padding: var(--spacing-large) var(--spacing-big);
   }
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   body.columns main {
     flex-direction: row;
   }
@@ -580,7 +556,34 @@ main[hidden] {
   background-color: var(--frescopa-color-black);
 }
 
+main > .section + .numbered {
+  margin: 20px;
+}
 
+main > .section + .card-tiles > div {
+  max-width: 1200px;
+}
+
+main > .section + .background {
+  max-width: 1360px;
+  padding: 10px 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--frescopa-color-background) url('../../styles/backgrounds/big.svg') no-repeat center center/cover;
+}
+
+main > .section + .background > div {
+  max-width: 1200px;
+  margin: auto;
+}
+
+@media (width >= 900px) {
+  main > .section + .background {
+    border-radius: 12px;
+    padding: 50px 0 2px;
+    margin-top: -20px;
+  }
+}
 
 /* Section layout variations */
 .section.columns {
@@ -594,16 +597,43 @@ main[hidden] {
 }
 
 /* Media queries */
-@media (max-width: 1199px) {
+@media (width < 1200px) {
   .section.columns {
       gap: 40px;
       padding: 20px;
   }
 }
 
-@media (max-width: 899px) {
+@media (width < 900px) {
   .section.columns {
       flex-direction: column;
       padding: 0;
   }
+}
+
+.blog .default-content-wrapper {
+  max-width: 1200px;
+
+p:not(:last-child):has(+ p) {
+  margin-bottom: 1.5625em;
+}
+
+/* Remove default bottom margin for p if not followed by another p */
+p:not(:has(+ p)) {
+  margin-bottom: 0;
+}
+
+
+}
+
+.blog > .default-content-wrapper > p:first-of-type {
+  font-size: 2.4rem;
+  line-height: 1.4;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.blog > .default-content-wrapper .button {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
