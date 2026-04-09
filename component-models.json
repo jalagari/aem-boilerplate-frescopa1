@@ -5019,7 +5019,7 @@
         "valueType": "string",
         "variationName": "contentFragmentVariation",
         "validation": {
-          "rootPath": "/content/dam/frescopa/en"
+          "rootPath": "/content/dam"
         }
       }
     ]
