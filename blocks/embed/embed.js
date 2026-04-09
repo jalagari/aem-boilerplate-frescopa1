@@ -88,8 +88,26 @@ const loadEmbed = (block, link, autoplay) => {
 };
 
 export default function decorate(block) {
-  const placeholder = block.querySelector('picture');
-  const link = block.querySelector('a').href;
+  let [placeholder, link] = [...block.children];
+  link = link?.querySelector('a')?.href;
+  placeholder = placeholder?.querySelector('picture,a');
+
+  // If no <picture>, check if the second row contains a link to an image (delivery URL)
+  if (placeholder?.tagName === 'A') {
+    const { href } = placeholder;
+    const isImage = /\.(jpg|jpeg|png|gif|webp|avif|svg)(\?.*)?$/i.test(href)
+      || /\/adobe\/assets\//.test(href);
+    if (isImage) {
+      const img = document.createElement('img');
+      img.src = href;
+      img.alt = placeholder.textContent || '';
+      img.loading = 'lazy';
+      const pic = document.createElement('picture');
+      pic.append(img);
+      placeholder = pic;
+    }
+  }
+
   block.textContent = '';
 
   if (placeholder) {
